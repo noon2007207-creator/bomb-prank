@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bomb Prank – مزحة القنبلة الكرتونية</title>
+<meta name="description" content="أنشئ رابط مزحة كرتونية وشاركه مع صديقك. لا شيء حقيقي، مجرد ضحك.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💣</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700&family=Lalezar&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fff4d6; --ink:#1d1b3a; --fuse:#ff6b35; --pop:#ffd23f; --mint:#3ddc97; --night:#14122e;
+  --font-display:"Lalezar","Cairo",system-ui,sans-serif; --font-body:"Cairo",system-ui,-apple-system,"Segoe UI",Tahoma,sans-serif;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%}
+body{font-family:var(--font-body);background:var(--paper);color:var(--ink);padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);overflow-x:hidden}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:4px solid var(--fuse);outline-offset:3px}
+.hidden{display:none!important}
+
+/* ---------- Home ---------- */
+#home{min-height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem;padding:1.5rem;text-align:center;background:
+  radial-gradient(circle at 1px 1px,rgba(29,27,58,.12) 1.5px,transparent 0) 0 0/22px 22px,var(--paper)}
+#home h1{font-family:var(--font-display);font-weight:400;font-size:clamp(2.6rem,9vw,5rem);margin:0;line-height:1.05;text-shadow:4px 4px 0 var(--pop)}
+#home p.lead{max-width:34ch;margin:0;font-size:1.15rem;line-height:1.7}
+.home-bomb{width:clamp(130px,34vw,210px);animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-3deg)}}
+.btn{border:3px solid var(--ink);border-radius:16px;padding:.8rem 1.4rem;font-weight:700;font-size:1.1rem;background:#fff;color:var(--ink);box-shadow:5px 5px 0 var(--ink);transition:transform .08s,box-shadow .08s}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+.btn.primary{background:var(--fuse);color:#fff}
+.btn.mint{background:var(--mint)}
+.btn:disabled{opacity:.5;cursor:not-allowed}
+.row{display:flex;flex-wrap:wrap;gap:.9rem;justify-content:center}
+#linkBox{width:min(92vw,520px);display:flex;flex-direction:column;gap:.8rem;align-items:center;padding:1.1rem;border:3px solid var(--ink);border-radius:20px;background:#fff;box-shadow:6px 6px 0 var(--ink)}
+#linkBox input{width:100%;direction:ltr;text-align:left;font:600 .95rem/1.4 ui-monospace,Menlo,Consolas,monospace;padding:.7rem;border:2px dashed var(--ink);border-radius:12px;background:var(--paper);color:var(--ink)}
+#toast{min-height:1.5em;font-weight:700;color:#0a7a4b}
+.note{font-size:.9rem;opacity:.75;max-width:44ch;margin:0}
+
+/* ---------- Prank ---------- */
+#prank{position:fixed;inset:0;background:var(--night);color:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;overflow:hidden;text-align:center;padding:1rem}
+#prank.shake{animation:shake .5s linear 1}
+@keyframes shake{0%,100%{transform:translate(0)}10%{transform:translate(-14px,8px)}20%{transform:translate(12px,-10px)}30%{transform:translate(-10px,-6px)}40%{transform:translate(9px,10px)}50%{transform:translate(-8px,4px)}60%{transform:translate(6px,-6px)}80%{transform:translate(-3px,3px)}}
+#banner{position:absolute;top:calc(env(safe-area-inset-top) + 10px);inset-inline:0;font-size:.85rem;opacity:.7}
+#count{font-family:var(--font-display);font-size:clamp(5rem,26vw,11rem);line-height:1;color:var(--pop);text-shadow:0 6px 0 var(--fuse)}
+#count.tick{animation:pop .35s ease-out}
+@keyframes pop{from{transform:scale(1.35)}to{transform:scale(1)}}
+#bomb{width:clamp(170px,48vw,300px);transition:transform .3s}
+#bomb.nervous{animation:jitter .12s linear infinite}
+@keyframes jitter{25%{transform:translate(-3px,2px) rotate(-2deg)}75%{transform:translate(3px,-2px) rotate(2deg)}}
+.sparkpath{transform-box:fill-box;transform-origin:center;animation:spark .25s steps(2) infinite}
+@media (prefers-reduced-motion:reduce){.sparkpath{animation:none}}
+@keyframes spark{50%{transform:scale(1.5) rotate(40deg)}}
+#sub{font-size:1.1rem;min-height:1.6em;opacity:.9}
+#flash{position:absolute;inset:0;background:#fff;opacity:0;pointer-events:none}
+#flash.go{animation:flash .45s ease-out forwards}
+@keyframes flash{0%{opacity:1}100%{opacity:0}}
+#fx{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+#result{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1rem;padding:1.5rem;background:rgba(20,18,46,.55);animation:rise .6s ease-out both}
+@keyframes rise{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:scale(1)}}
+#result h2{font-family:var(--font-display);font-weight:400;font-size:clamp(3rem,15vw,7rem);margin:0;color:var(--pop);text-shadow:0 5px 0 var(--fuse);line-height:1.1}
+#result p{font-size:1.25rem;margin:0;max-width:28ch;line-height:1.7}
+
+/* controls */
+#controls{position:absolute;bottom:calc(env(safe-area-inset-bottom) + 12px);inset-inline:0;display:flex;gap:.6rem;justify-content:center}
+.chip{border:2px solid rgba(255,255,255,.6);background:rgba(255,255,255,.12);color:#fff;border-radius:999px;padding:.45rem .95rem;font-weight:600;font-size:.9rem}
+.chip[aria-pressed="true"]{background:var(--pop);color:var(--ink);border-color:var(--pop)}
+@media (prefers-reduced-motion:reduce){.home-bomb{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- الصفحة الرئيسية -->
+<main id="home">
+  <svg class="home-bomb" viewBox="0 0 200 220" aria-hidden="true"></svg>
+  <h1>Bomb Prank</h1>
+  <p class="lead">اصنع رابط مزحة كرتونية وأرسله لصديقك. لا شيء حقيقي، مجرد قنبلة ورقية وضحكة.</p>
+  <div class="row">
+    <button class="btn primary" id="makeBtn">أنشئ رابط المزحة</button>
+  </div>
+  <div id="linkBox" class="hidden">
+    <input id="linkInput" readonly aria-label="رابط المزحة" dir="ltr">
+    <div class="row">
+      <button class="btn mint" id="copyBtn">انسخ الرابط</button>
+      <button class="btn" id="testBtn">جرّبه بنفسك</button>
+    </div>
+    <div id="toast" role="status" aria-live="polite"></div>
+  </div>
+  <p class="note">المزحة كرتونية بالكامل: لا تنزيل ملفات ولا أذونات ولا جمع بيانات. يمكن للضحية إيقاف الصوت والحركة في أي وقت.</p>
+</main>
+
+<!-- شاشة المزحة -->
+<section id="prank" class="hidden" aria-live="polite">
+  <div id="banner">مزحة كرتونية – لا شيء حقيقي 🎈</div>
+  <div id="count" aria-hidden="false">5</div>
+  <svg id="bomb" viewBox="0 0 200 220" aria-hidden="true"></svg>
+  <div id="sub">شيء ما يشتعل...</div>
+  <canvas id="fx"></canvas>
+  <div id="flash"></div>
+  <div id="result" class="hidden">
+    <h2>لقد متّ! 💀</h2>
+    <p>كانت مجرد مزحة كرتونية. لا تقلق، ما زلت حياً تماماً 😂</p>
+    <div class="row">
+      <button class="btn primary" id="againBtn">أعد المشهد</button>
+      <button class="btn mint" id="mineBtn">اصنع مزحتك</button>
+    </div>
+  </div>
+  <div id="controls">
+    <button class="chip" id="soundBtn" aria-pressed="false">🔇 الصوت: مغلق</button>
+    <button class="chip" id="motionBtn" aria-pressed="false">🎬 الحركة: كاملة</button>
+  </div>
+</section>
+
+<script>
+(() => {
+  "use strict";
+  const $ = id => document.getElementById(id);
+  const reduceMQ = matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* رسمة القنبلة الكرتونية (تُستخدم في الصفحتين) */
+  const BOMB_SVG = `
+    <ellipse cx="100" cy="205" rx="62" ry="9" fill="rgba(0,0,0,.25)"/>
+    <circle cx="100" cy="130" r="72" fill="#2b2a4c" stroke="#0d0c20" stroke-width="7"/>
+    <ellipse cx="76" cy="102" rx="20" ry="12" fill="#fff" opacity=".35" transform="rotate(-35 76 102)"/>
+    <rect x="82" y="48" width="36" height="22" rx="6" fill="#6b6a8f" stroke="#0d0c20" stroke-width="6"/>
+    <path d="M100 48 C100 28 124 34 128 14" fill="none" stroke="#c8935a" stroke-width="6" stroke-linecap="round"/>
+    <g class="sp" transform="translate(128 12)">
+      <path d="M0 -16 L5 -5 L16 0 L5 5 L0 16 L-5 5 L-16 0 L-5 -5Z" fill="#ffd23f" stroke="#ff6b35" stroke-width="3" class="sparkpath"/>
+    </g>
+    <circle cx="78" cy="128" r="9" fill="#fff"/><circle cx="122" cy="128" r="9" fill="#fff"/>
+    <circle class="pupil" cx="80" cy="130" r="4.5" fill="#0d0c20"/><circle class="pupil" cx="124" cy="130" r="4.5" fill="#0d0c20"/>
+    <path d="M80 160 Q100 176 120 160" fill="none" stroke="#fff" stroke-width="5" stroke-linecap="round"/>`;
+  document.querySelectorAll("svg.home-bomb,#bomb").forEach(s => s.innerHTML = BOMB_SVG);
+  $("bomb").querySelector(".sp").id = "spark";
+
+  /* ---------- معرّف المزحة والرابط ---------- */
+  const ALPHABET = "abcdefghjkmnpqrstuvwxyz23456789";
+  function newId(len = 6) {
+    const a = new Uint32Array(len);
+    (crypto || window.msCrypto).getRandomValues(a);
+    return Array.from(a, n => ALPHABET[n % ALPHABET.length]).join("");
+  }
+  const baseUrl = () => location.origin === "null" || location.protocol === "file:"
+    ? location.href.split("?")[0].split("#")[0]
+    : location.origin + location.pathname;
+  const prankUrl = id => baseUrl() + "?id=" + encodeURIComponent(id);
+  const params = new URLSearchParams(location.search);
+  const prankId = (params.get("id") || "").replace(/[^a-z0-9]/gi, "").slice(0, 16);
+
+  /* ---------- الصفحة الرئيسية ---------- */
+  let toastTimer;
+  const toast = msg => { $("toast").textContent = msg; clearTimeout(toastTimer); toastTimer = setTimeout(() => $("toast").textContent = "", 2500); };
+
+  $("makeBtn").onclick = () => {
+    const url = prankUrl(newId());
+    $("linkInput").value = url;
+    $("linkBox").classList.remove("hidden");
+    $("copyBtn").focus();
+  };
+  $("copyBtn").onclick = async () => {
+    const input = $("linkInput");
+    try { await navigator.clipboard.writeText(input.value); toast("تم نسخ الرابط ✅"); }
+    catch {
+      input.focus(); input.select();
+      try { document.execCommand("copy"); toast("تم نسخ الرابط ✅"); }
+      catch { toast("انسخ الرابط يدوياً من الحقل"); }
+    }
+  };
+  $("testBtn").onclick = () => { location.href = $("linkInput").value; };
+
+  /* ---------- الصوت (اختياري، يبدأ مغلقاً احتراماً لإعدادات المتصفح) ---------- */
+  let ctx = null, soundOn = false, motionOff = reduceMQ.matches;
+  function beep(freq = 660, dur = .12, type = "square", vol = .08) {
+    if (!soundOn || !ctx) return;
+    const o = ctx.createOscillator(), g = ctx.createGain();
+    o.type = type; o.frequency.value = freq;
+    g.gain.setValueAtTime(vol, ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.0001, ctx.currentTime + dur);
+    o.connect(g).connect(ctx.destination); o.start(); o.stop(ctx.currentTime + dur);
+  }
+  function boom() {
+    if (!soundOn || !ctx) return;
+    const len = ctx.sampleRate * 1.2, buf = ctx.createBuffer(1, len, ctx.sampleRate), d = buf.getChannelData(0);
+    for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / len, 2);
+    const src = ctx.createBufferSource(), lp = ctx.createBiquadFilter(), g = ctx.createGain();
+    src.buffer = buf; lp.type = "lowpass"; lp.frequency.setValueAtTime(900, ctx.currentTime);
+    lp.frequency.exponentialRampToValueAtTime(80, ctx.currentTime + 1);
+    g.gain.value = .9; src.connect(lp).connect(g).connect(ctx.destination); src.start();
+    // "ووووب" كرتونية هابطة
+    const o = ctx.createOscillator(), og = ctx.createGain();
+    o.type = "sawtooth"; o.frequency.setValueAtTime(300, ctx.currentTime); o.frequency.exponentialRampToValueAtTime(40, ctx.currentTime + .7);
+    og.gain.setValueAtTime(.25, ctx.currentTime); og.gain.exponentialRampToValueAtTime(.001, ctx.currentTime + .7);
+    o.connect(og).connect(ctx.destination); o.start(); o.stop(ctx.currentTime + .8);
+  }
+  function setSound(on) {
+    soundOn = on;
+    if (on) { ctx = ctx || new (window.AudioContext || window.webkitAudioContext)(); ctx.resume && ctx.resume(); beep(880, .08); }
+    const b = $("soundBtn"); b.setAttribute("aria-pressed", on); b.textContent = on ? "🔊 الصوت: مفعّل" : "🔇 الصوت: مغلق";
+  }
+  function setMotion(off) {
+    motionOff = off;
+    const b = $("motionBtn"); b.setAttribute("aria-pressed", off); b.textContent = off ? "🎬 الحركة: مخففة" : "🎬 الحركة: كاملة";
+  }
+  $("soundBtn").onclick = () => setSound(!soundOn);
+  $("motionBtn").onclick = () => setMotion(!motionOff);
+
+  /* ---------- مؤثرات الانفجار ---------- */
+  const cv = $("fx"), g2 = cv.getContext("2d");
+  let W = 0, H = 0, parts = [], puffs = [], raf = 0;
+  function resize() {
+    const dpr = Math.min(devicePixelRatio || 1, 2);
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr; g2.setTransform(dpr, 0, 0, dpr, 0, 0);
+  }
+  addEventListener("resize", () => { if (!$("prank").classList.contains("hidden")) resize(); });
+
+  const COLORS = ["#ffd23f", "#ff6b35", "#ff3d54", "#fff4d6", "#3ddc97"];
+  function burst() {
+    const cx = W / 2, cy = H / 2, n = motionOff ? 24 : (W < 600 ? 70 : 120);
+    parts = []; puffs = [];
+    for (let i = 0; i < n; i++) {
+      const a = Math.random() * Math.PI * 2, s = 3 + Math.random() * 11;
+      parts.push({ x: cx, y: cy, vx: Math.cos(a) * s, vy: Math.sin(a) * s - 2, r: 4 + Math.random() * 8,
+        c: COLORS[i % COLORS.length], life: 1, rot: Math.random() * 6, star: Math.random() < .4 });
+    }
+    const pn = motionOff ? 5 : 11;
+    for (let i = 0; i < pn; i++) {
+      const a = Math.random() * Math.PI * 2, d = Math.random() * 70;
+      puffs.push({ x: cx + Math.cos(a) * d, y: cy + Math.sin(a) * d, vx: Math.cos(a) * .8, vy: -.5 - Math.random(),
+        r: 20, max: 70 + Math.random() * 60, life: 1, shade: 150 + Math.random() * 70 });
+    }
+    cancelAnimationFrame(raf); loop();
+  }
+  function star(x, y, r, rot) {
+    g2.beginPath();
+    for (let i = 0; i < 8; i++) { const rr = i % 2 ? r * .45 : r, a = rot + i * Math.PI / 4; g2.lineTo(x + Math.cos(a) * rr, y + Math.sin(a) * rr); }
+    g2.closePath();
+  }
+  function loop() {
+    g2.clearRect(0, 0, W, H);
+    // دخان مرسوم بخط خارجي سميك
+    for (const p of puffs) {
+      p.x += p.vx; p.y += p.vy; p.r += (p.max - p.r) * .04; p.life -= .006;
+      if (p.life <= 0) continue;
+      g2.globalAlpha = Math.min(1, p.life * 1.6);
+      g2.fillStyle = `rgb(${p.shade},${p.shade},${p.shade + 10})`; g2.strokeStyle = "#0d0c20"; g2.lineWidth = 5;
+      for (const [dx, dy, k] of [[0, 0, 1], [-.7, .3, .7], [.7, .35, .75], [.1, -.7, .65]]) {
+        g2.beginPath(); g2.arc(p.x + dx * p.r, p.y + dy * p.r, p.r * k, 0, 7); g2.fill(); g2.stroke();
+      }
+      g2.beginPath(); g2.arc(p.x, p.y, p.r, 0, 7); g2.fill();
+    }
+    // جزيئات
+    for (const p of parts) {
+      p.x += p.vx; p.y += p.vy; p.vy += .22; p.vx *= .985; p.life -= .011; p.rot += .15;
+      if (p.life <= 0) continue;
+      g2.globalAlpha = Math.max(0, p.life); g2.fillStyle = p.c; g2.strokeStyle = "#0d0c20"; g2.lineWidth = 2.5;
+      if (p.star) star(p.x, p.y, p.r * 1.5, p.rot); else { g2.beginPath(); g2.arc(p.x, p.y, p.r, 0, 7); }
+      g2.fill(); g2.stroke();
+    }
+    g2.globalAlpha = 1;
+    if (parts.some(p => p.life > 0) || puffs.some(p => p.life > 0)) raf = requestAnimationFrame(loop);
+    else g2.clearRect(0, 0, W, H);
+  }
+
+  /* ---------- سير المزحة ---------- */
+  let timers = [];
+  const later = (fn, ms) => timers.push(setTimeout(fn, ms));
+  const SUBS = ["شيء ما يشتعل...", "هل سمعت هذا الفحيح؟", "ربما من الأفضل أن تبتعد...", "لا تلمس الشاشة!", "وداعاً يا صديقي..."];
+
+  function start() {
+    timers.forEach(clearTimeout); timers = [];
+    cancelAnimationFrame(raf); g2.clearRect(0, 0, W, H);
+    $("result").classList.add("hidden");
+    ["count", "bomb", "sub", "banner"].forEach(i => $(i).classList.remove("hidden"));
+    $("bomb").style.transform = ""; $("bomb").classList.remove("nervous");
+    $("prank").classList.remove("shake");
+    resize();
+    let n = 5;
+    const tick = () => {
+      $("count").textContent = n; $("sub").textContent = SUBS[5 - n];
+      $("count").classList.remove("tick"); void $("count").offsetWidth; if (!motionOff) $("count").classList.add("tick");
+      beep(n > 1 ? 520 : 820, .15);
+      if (n <= 2 && !motionOff) $("bomb").classList.add("nervous");
+      if (n <= 3) $("bomb").style.transform = `scale(${1 + (4 - n) * .07})`;
+      if (n === 0) return explode();
+      n--; later(tick, 1000);
+    };
+    tick();
+  }
+
+  function explode() {
+    ["count", "bomb", "sub", "banner"].forEach(i => $(i).classList.add("hidden"));
+    boom();
+    const f = $("flash"); f.classList.remove("go"); void f.offsetWidth;
+    if (!motionOff) { f.classList.add("go"); $("prank").classList.add("shake"); }
+    burst();
+    later(() => { $("result").classList.remove("hidden"); $("againBtn").focus(); }, motionOff ? 200 : 900);
+  }
+
+  $("againBtn").onclick = start;
+  $("mineBtn").onclick = () => { location.href = baseUrl(); };
+
+  /* ---------- نقطة البداية ---------- */
+  if (prankId) {
+    $("home").classList.add("hidden");
+    $("prank").classList.remove("hidden");
+    document.title = "…";
+    setMotion(motionOff);
+    start();
+  }
+})();
+</script>
+</body>
+</html>
